@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minha conta — ÁUREO Cafés Especiais</title>
+  <meta name="theme-color" content="#1c1714" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { espresso:'#1c1714', bean:'#2a1d16', cocoa:'#3b2a20', cream:'#f6f1e7', sand:'#ede4d3', gold:'#c19a5b', goldlight:'#d9be8e', moss:'#5b6b52' },
+      fontFamily: { display:['Fraunces','serif'], sans:['Inter','sans-serif'] },
+    }}};
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>.tab.active{background:var(--espresso);color:var(--cream)} .panel{display:none}.panel.active{display:block}</style>
+</head>
+<body class="font-sans">
+
+  <header class="site-header sticky top-0 z-50 py-4 scrolled">
+    <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl font-semibold tracking-wide">ÁUREO<span class="text-gold">.</span></a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="nav-link">Início</a><a href="loja.html" class="nav-link">Loja</a><a href="assinatura.html" class="nav-link">Clube</a><a href="sobre.html" class="nav-link">Nossa história</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="conta.html" aria-label="Minha conta" class="text-gold"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a>
+        <a href="carrinho.html" aria-label="Sacola" class="relative hover:text-gold transition"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span data-cart-count class="hidden absolute -top-2 -right-2 bg-gold text-espresso text-[10px] font-bold w-5 h-5 grid place-items-center rounded-full">0</span></a>
+        <button data-menu-toggle class="md:hidden" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div data-mobile-menu class="mobile-menu hidden-menu fixed inset-0 z-50 bg-cream md:hidden">
+    <div class="flex justify-between items-center px-5 py-4 border-b" style="border-color:var(--line)"><span class="font-display text-2xl font-semibold">ÁUREO<span class="text-gold">.</span></span><button data-menu-close aria-label="Fechar"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <nav class="flex flex-col px-5 py-6 gap-1 text-lg font-display"><a href="index.html" class="py-3 border-b" style="border-color:var(--line)">Início</a><a href="loja.html" class="py-3 border-b" style="border-color:var(--line)">Loja</a><a href="assinatura.html" class="py-3 border-b" style="border-color:var(--line)">Clube</a><a href="sobre.html" class="py-3">Nossa história</a></nav>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-5 pt-10 pb-24">
+    <!-- Welcome -->
+    <div class="flex items-center gap-4 reveal">
+      <div class="w-16 h-16 rounded-full bg-gold/20 grid place-items-center font-display text-2xl text-gold">M</div>
+      <div>
+        <p class="opacity-60 text-sm">Bem-vinda de volta,</p>
+        <h1 class="font-display text-3xl sm:text-4xl">Marina Andrade</h1>
+      </div>
+      <span class="ml-auto chip chip-gold hidden sm:inline-flex">Assinante · Clube ÁUREO</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap gap-2 mt-8 reveal">
+      <button class="tab btn btn-ghost !py-2 !px-4 text-sm active" data-tab="assinatura">Minha assinatura</button>
+      <button class="tab btn btn-ghost !py-2 !px-4 text-sm" data-tab="pedidos">Pedidos</button>
+      <button class="tab btn btn-ghost !py-2 !px-4 text-sm" data-tab="enderecos">Endereços</button>
+      <button class="tab btn btn-ghost !py-2 !px-4 text-sm" data-tab="beneficios">Benefícios</button>
+      <button class="tab btn btn-ghost !py-2 !px-4 text-sm" data-tab="dados">Meus dados</button>
+    </div>
+
+    <div class="mt-8 grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+
+        <!-- Subscription panel -->
+        <section class="panel active" data-panel="assinatura">
+          <div class="card p-7">
+            <div class="flex justify-between items-start flex-wrap gap-3">
+              <div>
+                <span class="chip chip-gold">Plano ativo</span>
+                <h2 class="font-display text-3xl mt-2">Clube ÁUREO</h2>
+                <p class="opacity-65 text-sm mt-1">2 pacotes de 250g · cobrança mensal de R$ 109,00</p>
+              </div>
+              <span class="text-right"><p class="opacity-60 text-xs">Próximo envio</p><p class="font-display text-2xl">28 jun</p></span>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3 mt-6">
+              <button class="btn btn-ghost text-sm" onclick="window.AUREO_TOAST('Assinatura pausada por 1 ciclo.')">Pausar</button>
+              <button class="btn btn-ghost text-sm" onclick="window.AUREO_TOAST('Próximo envio antecipado!')">Antecipar envio</button>
+              <a href="assinatura.html" class="btn btn-ghost text-sm">Trocar plano</a>
+            </div>
+            <div class="mt-5 p-4 rounded-xl bg-sand text-sm">
+              <p class="font-medium">Preferências de curadoria</p>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="chip chip-moss">Método: Coado</span>
+                <span class="chip chip-moss">Intensidade: Média</span>
+                <span class="chip chip-moss">Sem descafeinado</span>
+                <button class="chip chip-gold" onclick="window.AUREO_TOAST('Abrindo edição de preferências…')">Editar</button>
+              </div>
+            </div>
+          </div>
+          <div class="card p-6 mt-5">
+            <p class="font-display text-xl">Histórico do clube</p>
+            <div class="mt-4 space-y-3 text-sm">
+              <div class="flex justify-between items-center"><span>Maio · Etiópia Yirgacheffe + Bourbon Amarelo</span><span class="chip chip-moss">Entregue</span></div>
+              <div class="flex justify-between items-center"><span>Abril · Microlote Honey + Catuaí Vermelho</span><span class="chip chip-moss">Entregue</span></div>
+              <div class="flex justify-between items-center"><span>Março · Geisha Boquete + Espresso Signature</span><span class="chip chip-moss">Entregue</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Orders panel -->
+        <section class="panel" data-panel="pedidos">
+          <div class="card p-7">
+            <h2 class="font-display text-2xl mb-4">Meus pedidos</h2>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center py-3 border-b" style="border-color:var(--line)">
+                <div><p class="font-medium">#A-2048</p><p class="text-xs opacity-60">12 jun 2026 · 2 itens · R$ 182,00</p></div>
+                <div class="flex items-center gap-3"><span class="chip chip-gold">A caminho</span><a data-wa="Olá! Quero acompanhar o pedido #A-2048." class="text-sm hover:text-gold">Rastrear</a></div>
+              </div>
+              <div class="flex justify-between items-center py-3 border-b" style="border-color:var(--line)">
+                <div><p class="font-medium">#A-1991</p><p class="text-xs opacity-60">28 mai 2026 · 1 item · R$ 96,00</p></div>
+                <div class="flex items-center gap-3"><span class="chip chip-moss">Entregue</span><button class="text-sm hover:text-gold" onclick="window.AUREO_TOAST('Itens adicionados à sacola!')">Comprar de novo</button></div>
+              </div>
+              <div class="flex justify-between items-center py-3">
+                <div><p class="font-medium">#A-1840</p><p class="text-xs opacity-60">02 mai 2026 · 3 itens · R$ 247,00</p></div>
+                <div class="flex items-center gap-3"><span class="chip chip-moss">Entregue</span><button class="text-sm hover:text-gold" onclick="window.AUREO_TOAST('Itens adicionados à sacola!')">Comprar de novo</button></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Addresses panel -->
+        <section class="panel" data-panel="enderecos">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="card p-6"><span class="chip chip-gold">Principal</span><p class="font-medium mt-3">Casa</p><p class="text-sm opacity-65 mt-1">Rua das Oliveiras, 240 · Apto 71<br>Pinheiros · São Paulo / SP<br>05422-030</p><button class="text-sm hover:text-gold mt-3" onclick="window.AUREO_TOAST('Editando endereço…')">Editar</button></div>
+            <div class="card p-6 border-dashed grid place-items-center text-center"><button class="opacity-70 hover:text-gold" onclick="window.AUREO_TOAST('Novo endereço…')"><span class="text-3xl">+</span><br>Adicionar endereço</button></div>
+          </div>
+        </section>
+
+        <!-- Benefits panel -->
+        <section class="panel" data-panel="beneficios">
+          <div class="card p-7">
+            <h2 class="font-display text-2xl">Seus benefícios de assinante</h2>
+            <div class="grid sm:grid-cols-2 gap-4 mt-5 text-sm">
+              <div class="p-4 rounded-xl bg-sand"><p class="font-medium">15% off vitalício</p><p class="opacity-65 mt-1">Aplicado automaticamente no checkout.</p></div>
+              <div class="p-4 rounded-xl bg-sand"><p class="font-medium">Frete grátis</p><p class="opacity-65 mt-1">Em todas as entregas do clube.</p></div>
+              <div class="p-4 rounded-xl bg-sand"><p class="font-medium">Acesso antecipado</p><p class="opacity-65 mt-1">Você tem 2 microlotes liberados antes da loja.</p></div>
+              <div class="p-4 rounded-xl bg-sand"><p class="font-medium">Cupons exclusivos</p><p class="opacity-65 mt-1">Use <strong>ASSINANTE20</strong> em acessórios.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Data panel -->
+        <section class="panel" data-panel="dados">
+          <div class="card p-7">
+            <h2 class="font-display text-2xl mb-5">Meus dados</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div><label class="label">Nome</label><input class="field" value="Marina Andrade" /></div>
+              <div><label class="label">E-mail</label><input class="field" value="marina@email.com" /></div>
+              <div><label class="label">Telefone</label><input class="field" value="(11) 98888-1234" /></div>
+              <div><label class="label">Senha</label><input class="field" type="password" value="••••••••" /></div>
+            </div>
+            <button class="btn btn-primary mt-5" onclick="window.AUREO_TOAST('Dados salvos com sucesso!')">Salvar alterações</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="space-y-5">
+        <div class="card p-6 !bg-espresso text-cream">
+          <p class="eyebrow">Resumo</p>
+          <div class="mt-3 space-y-3 text-sm">
+            <div class="flex justify-between"><span class="opacity-70">Pedidos</span><span class="font-semibold">14</span></div>
+            <div class="flex justify-between"><span class="opacity-70">No clube há</span><span class="font-semibold">8 meses</span></div>
+            <div class="flex justify-between"><span class="opacity-70">Economizado</span><span class="font-semibold text-gold">R$ 312</span></div>
+          </div>
+        </div>
+        <div class="card p-6">
+          <p class="font-display text-xl">Precisa de ajuda?</p>
+          <p class="text-sm opacity-65 mt-2">Fale com a gente pelo WhatsApp e acompanhe qualquer pedido em tempo real.</p>
+          <a data-wa="Olá! Sou assinante do Clube ÁUREO e preciso de ajuda." class="btn btn-gold w-full mt-4 text-sm">Falar no WhatsApp</a>
+        </div>
+        <button class="btn btn-ghost w-full text-sm" onclick="window.AUREO_TOAST('Você saiu da conta.')">Sair</button>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="bg-espresso text-cream">
+    <div class="max-w-7xl mx-auto px-5 py-10 text-xs opacity-50">© <span data-year>2026</span> ÁUREO Cafés Especiais. Demonstração de UI.</div>
+  </footer>
+
+  <a data-wa="Olá! Preciso de ajuda na minha conta ÁUREO." class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.04c-.24.68-1.4 1.3-1.93 1.38-.49.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.17-.19.69-.81.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.21.52.32.07.12.07.66-.17 1.34z"/></svg></a>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(t => t.addEventListener('click', () => {
+        tabs.forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.dataset.panel === t.dataset.tab));
+      }));
+    });
+  </script>
+</body>
+</html>

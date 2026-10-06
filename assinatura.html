@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clube de Assinatura — ÁUREO Cafés Especiais</title>
+  <meta name="description" content="Assine o Clube ÁUREO: microlotes raros torrados sob demanda na sua casa todo mês, a partir de menos de R$ 3 por xícara. 15% off, frete grátis e garantia da primeira xícara. Pause ou cancele quando quiser." />
+  <meta name="theme-color" content="#1c1714" />
+  <meta property="og:title" content="Clube ÁUREO — café especial em casa, a partir de R$ 2 por xícara" />
+  <meta property="og:description" content="Microlotes raros, torra sob demanda e frete grátis todo mês. Descubra na trilha do café qual plano combina com o seu ritual." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { espresso:'#1c1714', bean:'#2a1d16', cocoa:'#3b2a20', cream:'#f6f1e7', sand:'#ede4d3', gold:'#c19a5b', goldlight:'#d9be8e', moss:'#5b6b52' },
+      fontFamily: { display:['Fraunces','serif'], sans:['Inter','sans-serif'] },
+    }}};
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Toggle de cobrança — legível sobre o hero escuro */
+    [data-billing-toggle] button { padding:.55rem 1.15rem; border-radius:999px; font-size:.85rem; font-weight:600; color:rgba(246,241,231,.8); transition:all .25s; }
+    [data-billing-toggle] button.active-cycle { background:var(--gold); color:var(--espresso); box-shadow:0 8px 20px -10px rgba(193,154,91,.8); }
+    .stars { letter-spacing:.08em; color:var(--gold); }
+  </style>
+</head>
+<body class="font-sans">
+
+  <header class="site-header sticky top-0 z-50 py-4 scrolled">
+    <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl font-semibold tracking-wide">ÁUREO<span class="text-gold">.</span></a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="nav-link">Início</a><a href="loja.html" class="nav-link">Loja</a><a href="assinatura.html" class="nav-link active">Clube</a><a href="sobre.html" class="nav-link">Nossa história</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="conta.html" aria-label="Minha conta" class="hover:text-gold transition"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a>
+        <a href="carrinho.html" aria-label="Sacola" class="relative hover:text-gold transition"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span data-cart-count class="hidden absolute -top-2 -right-2 bg-gold text-espresso text-[10px] font-bold w-5 h-5 grid place-items-center rounded-full">0</span></a>
+        <button data-menu-toggle class="md:hidden" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div data-mobile-menu class="mobile-menu hidden-menu fixed inset-0 z-50 bg-cream md:hidden">
+    <div class="flex justify-between items-center px-5 py-4 border-b" style="border-color:var(--line)"><span class="font-display text-2xl font-semibold">ÁUREO<span class="text-gold">.</span></span><button data-menu-close aria-label="Fechar"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <nav class="flex flex-col px-5 py-6 gap-1 text-lg font-display"><a href="index.html" class="py-3 border-b" style="border-color:var(--line)">Início</a><a href="loja.html" class="py-3 border-b" style="border-color:var(--line)">Loja</a><a href="assinatura.html" class="py-3 border-b" style="border-color:var(--line)">Clube</a><a href="sobre.html" class="py-3">Nossa história</a></nav>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-espresso text-cream relative overflow-hidden" data-beans="18">
+    <div class="absolute inset-0" style="background:radial-gradient(90% 90% at 80% 0%, rgba(193,154,91,.25), transparent 55%)"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-5 py-20 sm:py-24 text-center reveal">
+      <span class="eyebrow">Clube ÁUREO de assinatura</span>
+      <h1 class="font-display text-5xl sm:text-6xl mt-4 leading-tight text-balance">Café raro de verdade, <span class="italic text-gold">na sua casa todo mês</span>.</h1>
+      <p class="opacity-75 mt-5 max-w-xl mx-auto">Microlotes selecionados a dedo pelos nossos mestres de torra e torrados sob demanda — entregues frescos na sua porta. A partir de <strong class="text-cream">menos de R$ 3 por xícara</strong>.</p>
+
+      <!-- prova social -->
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+        <span class="stars text-lg">★★★★★</span>
+        <span><strong>4,9/5</strong></span>
+        <span class="opacity-50">·</span>
+        <span>de <span class="text-gold font-semibold">1.200+</span> assinantes que recebem café especial todo mês</span>
+      </div>
+
+      <!-- toggle de ciclo -->
+      <div class="mt-9 inline-flex items-center gap-1 p-1 rounded-full bg-white/10" data-billing-toggle>
+        <button data-cycle="month">Mensal</button>
+        <button data-cycle="quarter">Trimestral <span class="text-gold font-bold">−10%</span></button>
+      </div>
+
+      <!-- microcopy de confiança -->
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs opacity-70">
+        <span class="inline-flex items-center gap-1.5"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sem fidelidade</span>
+        <span class="inline-flex items-center gap-1.5"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Pause ou cancele quando quiser</span>
+        <span class="inline-flex items-center gap-1.5"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1º envio em até 7 dias</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== POR QUE VALE A PENA (valor do café premium) ===================== -->
+  <section class="max-w-7xl mx-auto px-5 py-20">
+    <div class="text-center reveal max-w-2xl mx-auto">
+      <span class="eyebrow">Por que café especial</span>
+      <h2 class="font-display text-4xl sm:text-5xl mt-2">Vale cada gota — e te explicamos por quê</h2>
+      <p class="opacity-70 mt-4">Café especial não é “café caro”. É café <strong>pontuado acima de 84 pelos critérios da SCA</strong>, com origem rastreável e torra fresca. A diferença na xícara é impossível de ignorar.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div class="card p-7 reveal">
+        <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c4 2 6 5 6 9a6 6 0 0 1-12 0c0-4 2-7 6-9z"/><path d="M12 5c-1.5 4-1.5 9 0 14"/></svg></div>
+        <p class="font-display text-xl mt-4">Origem rastreável</p>
+        <p class="text-sm opacity-65 mt-2">Cada lote vem com fazenda, produtor, variedade e altitude. Você sabe exatamente o que está bebendo.</p>
+      </div>
+      <div class="card p-7 reveal" data-delay="1">
+        <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 1-5 1 1 2 1 3-3z"/></svg></div>
+        <p class="font-display text-xl mt-4">Torra fresca, sob demanda</p>
+        <p class="text-sm opacity-65 mt-2">Torramos só depois que você assina e enviamos em poucos dias. Café fresco tem aroma, doçura e complexidade que o de prateleira perdeu há meses.</p>
+      </div>
+      <div class="card p-7 reveal" data-delay="2">
+        <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l2.6 5.5 6 .7-4.4 4.2 1.1 5.9L12 16.8 6.7 19.5l1.1-5.9L3.4 9.4l6-.7z"/></svg></div>
+        <p class="font-display text-xl mt-4">Pontuação SCA 84+</p>
+        <p class="text-sm opacity-65 mt-2">Notas reais de jasmim, mel, frutas vermelhas e cacau — não “sabor de café genérico”. Provado e aprovado antes de ir pra sua casa.</p>
+      </div>
+      <div class="card p-7 reveal" data-delay="3">
+        <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <p class="font-display text-xl mt-4">Curadoria de Q-Graders</p>
+        <p class="text-sm opacity-65 mt-2">Quem escolhe são provadores certificados. Você recebe descobertas que não acharia sozinho — sem risco de errar a compra.</p>
+      </div>
+    </div>
+
+    <!-- Ancoragem de preço: o argumento de valor mais forte -->
+    <div class="mt-12 rounded-3xl p-8 sm:p-12 text-center reveal relative overflow-hidden" style="background:var(--espresso);color:var(--cream)">
+      <div class="absolute inset-0" style="background:radial-gradient(80% 80% at 50% 0%, rgba(193,154,91,.22), transparent 60%)"></div>
+      <div class="relative z-10">
+        <span class="eyebrow" style="color:var(--gold)">Faça as contas</span>
+        <p class="font-display text-2xl sm:text-4xl mt-4 max-w-3xl mx-auto leading-snug text-balance">Um café especial na cafeteria custa <span class="line-through opacity-40">R$ 12 a R$ 18</span>. Em casa, com o Clube ÁUREO, sai por <span class="text-gold">menos de R$ 3 a xícara</span>.</p>
+        <p class="opacity-70 mt-4 max-w-xl mx-auto">Torrado sob demanda, entregue fresco, sem fila e sem sair do sofá. O melhor café da sua semana pelo preço de um cafezinho de padaria.</p>
+        <a href="#planos" class="btn btn-gold mt-8">Escolher meu plano</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRILHA DO CAFÉ (experiência imersiva) ===================== -->
+  <section class="bg-sand">
+    <div class="max-w-3xl mx-auto px-5 py-20">
+      <div class="text-center reveal">
+        <span class="eyebrow">A trilha do café</span>
+        <h2 class="font-display text-4xl sm:text-5xl mt-2">Descubra o seu clube ideal</h2>
+        <p class="opacity-70 mt-3">4 perguntas rápidas e a gente revela qual plano combina com o seu ritual.</p>
+      </div>
+
+      <!-- progress trail -->
+      <div class="trail relative flex justify-between items-center max-w-sm mx-auto mt-10 reveal">
+        <div class="trail-line"><span class="fill" data-trail-fill></span></div>
+        <div class="trail-dot current" data-dot="0">1</div>
+        <div class="trail-dot" data-dot="1">2</div>
+        <div class="trail-dot" data-dot="2">3</div>
+        <div class="trail-dot" data-dot="3">4</div>
+      </div>
+
+      <div class="card p-7 sm:p-10 mt-8 reveal" id="quiz">
+        <!-- Step 1 -->
+        <div class="quiz-step active" data-step="0">
+          <p class="eyebrow text-center">Pergunta 1</p>
+          <h3 class="font-display text-2xl sm:text-3xl text-center mt-1">Quantas xícaras você toma por dia?</h3>
+          <div class="grid sm:grid-cols-3 gap-3 mt-7">
+            <button class="opt" data-plan="deg"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M7.5 2.5c-.5.8.5 1.4 0 2.5M11.5 2.5c-.5.8.5 1.4 0 2.5"/></svg></span><span><span class="font-medium block">1 xícara</span><span class="text-sm opacity-60">meu ritual diário</span></span></button>
+            <button class="opt" data-plan="sel"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="8" height="8" rx="2"/><rect x="13" y="11" width="7" height="6" rx="2"/></svg></span><span><span class="font-medium block">2 a 3</span><span class="text-sm opacity-60">faz parte da rotina</span></span></button>
+            <button class="opt" data-plan="res"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20S4 14.5 4 9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 5.5-8 11-8 11z"/></svg></span><span><span class="font-medium block">4 ou mais</span><span class="text-sm opacity-60">café é vida</span></span></button>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="quiz-step" data-step="1">
+          <p class="eyebrow text-center">Pergunta 2</p>
+          <h3 class="font-display text-2xl sm:text-3xl text-center mt-1">Qual é o seu perfil de explorador?</h3>
+          <div class="grid sm:grid-cols-3 gap-3 mt-7">
+            <button class="opt" data-plan="deg"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-7"/><path d="M12 13c0-3-2-5-5-5 0 3 2 5 5 5z"/><path d="M12 11c0-2.5 2-4 4.5-4 0 2.5-2 4-4.5 4z"/></svg></span><span><span class="font-medium block">Curioso</span><span class="text-sm opacity-60">quero começar com calma</span></span></button>
+            <button class="opt" data-plan="sel"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span><span><span class="font-medium block">Entusiasta</span><span class="text-sm opacity-60">amo variedade</span></span></button>
+            <button class="opt" data-plan="res"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 6 3-6M12 9v12"/></svg></span><span><span class="font-medium block">Caçador</span><span class="text-sm opacity-60">busco microlotes raros</span></span></button>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="quiz-step" data-step="2">
+          <p class="eyebrow text-center">Pergunta 3</p>
+          <h3 class="font-display text-2xl sm:text-3xl text-center mt-1">Como você gosta de preparar?</h3>
+          <div class="grid sm:grid-cols-2 gap-3 mt-7">
+            <button class="opt" data-plan="sel"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M7.5 2.5c-.5.8.5 1.4 0 2.5M11.5 2.5c-.5.8.5 1.4 0 2.5"/></svg></span><span><span class="font-medium block">Coado / Prensa</span><span class="text-sm opacity-60">clássico de todo dia</span></span></button>
+            <button class="opt" data-plan="sel"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span><span><span class="font-medium block">Espresso</span><span class="text-sm opacity-60">intenso e encorpado</span></span></button>
+            <button class="opt" data-plan="res"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/></svg></span><span><span class="font-medium block">Quero experimentar tudo</span><span class="text-sm opacity-60">métodos diferentes</span></span></button>
+            <button class="opt" data-plan="deg"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7M12 17h.01"/></svg></span><span><span class="font-medium block">Ainda descobrindo</span><span class="text-sm opacity-60">me guie nessa</span></span></button>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="quiz-step" data-step="3">
+          <p class="eyebrow text-center">Pergunta 4</p>
+          <h3 class="font-display text-2xl sm:text-3xl text-center mt-1">O que mais te atrai em um clube?</h3>
+          <div class="grid sm:grid-cols-2 gap-3 mt-7">
+            <button class="opt" data-plan="sel"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2a2.2 2.2 0 0 1 2.5-1.2c1.5.2 2 1 2 2M14.5 14.8a2.2 2.2 0 0 1-2.5 1.2c-1.5-.2-2-1-2-2"/></svg></span><span><span class="font-medium block">Economizar no dia a dia</span><span class="text-sm opacity-60">bom café sempre em casa</span></span></button>
+            <button class="opt" data-plan="res"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13"/><path d="M12 8S10 3 7.5 4 9 8 12 8zM12 8s2-5 4.5-4S15 8 12 8z"/></svg></span><span><span class="font-medium block">Surpresas premium</span><span class="text-sm opacity-60">raridades e brindes</span></span></button>
+            <button class="opt" data-plan="deg"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-13 14-13 0 8-6 13-14 13z"/><path d="M5 19c3-5 7-8 11-9"/></svg></span><span><span class="font-medium block">Algo leve, sem compromisso</span><span class="text-sm opacity-60">no meu tempo</span></span></button>
+            <button class="opt" data-plan="res"><span class="opt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l4 4 5-6 5 6 4-4-2 12H5z"/><path d="M5 21h14"/></svg></span><span><span class="font-medium block">Exclusividade total</span><span class="text-sm opacity-60">o melhor do melhor</span></span></button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="quiz-result text-center" data-result></div>
+
+        <!-- Nav -->
+        <div class="flex justify-between items-center mt-7" data-quiz-nav>
+          <button data-quiz-back class="btn btn-ghost !py-2 !px-4 text-sm" disabled>← Voltar</button>
+          <span class="text-sm opacity-60" data-quiz-progress>Passo 1 de 4</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLANOS ===================== -->
+  <section id="planos" class="max-w-7xl mx-auto px-5 pt-16 pb-12 relative z-10">
+    <div class="text-center reveal max-w-2xl mx-auto mb-12">
+      <span class="eyebrow">Escolha seu ritual</span>
+      <h2 class="font-display text-4xl sm:text-5xl mt-2">Três clubes, uma obsessão por qualidade</h2>
+      <p class="opacity-70 mt-3">Todos com 15% off na loja e curadoria fresca. Troque de plano, pause ou cancele quando quiser.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 items-stretch">
+
+      <!-- Degustação -->
+      <article class="card plan-card p-8 reveal" id="plan-deg" data-cups="20">
+        <p class="eyebrow">Iniciante</p>
+        <h3 class="font-display text-3xl mt-1">Degustação</h3>
+        <p class="text-sm opacity-65 mt-1 plan-tagline">Para começar a explorar o universo dos especiais — sem pressa.</p>
+        <div class="mt-5">
+          <p><span class="font-display text-5xl">R$ <span data-price-monthly="59" data-price-quarter="159">59</span></span><span class="opacity-60 text-sm" data-cycle-label>/mês</span></p>
+          <p class="text-sm mt-1.5 percup"><span class="text-gold font-semibold">≈ R$ <span data-percup>2,95</span></span><span class="opacity-55">por xícara</span></p>
+        </div>
+        <ul class="mt-6 space-y-3 text-sm plan-feats">
+          <li class="flex gap-3"><span class="text-gold">✦</span> 1 pacote de 250g por mês</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Curadoria rotativa de blends</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> 15% off na loja</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Ficha de degustação digital</li>
+          <li class="flex gap-3 plan-x"><span>✕</span> Frete grátis</li>
+          <li class="flex gap-3 plan-x"><span>✕</span> Microlotes raros</li>
+        </ul>
+        <a data-wa="Olá! Quero assinar o plano Degustação (R$59/mês) do Clube ÁUREO." class="btn btn-ghost w-full plan-cta mt-7">Assinar Degustação</a>
+      </article>
+
+      <!-- Selecionado (popular) -->
+      <article class="card plan-card featured p-8 reveal" data-delay="1" id="plan-sel" data-cups="40" style="background:linear-gradient(180deg,#fffdf8,#fff6e9)">
+        <span class="plan-badge chip chip-gold !bg-gold !text-espresso">★ Mais popular</span>
+        <p class="eyebrow">Selecionado</p>
+        <h3 class="font-display text-3xl mt-1">Clube ÁUREO</h3>
+        <p class="text-sm opacity-65 mt-1 plan-tagline">O equilíbrio perfeito entre variedade, economia e qualidade.</p>
+        <div class="mt-5">
+          <p><span class="font-display text-5xl">R$ <span data-price-monthly="109" data-price-quarter="294">109</span></span><span class="opacity-60 text-sm" data-cycle-label>/mês</span></p>
+          <p class="text-sm mt-1.5 percup"><span class="text-gold font-semibold">≈ R$ <span data-percup>2,73</span></span><span class="opacity-55">por xícara · mais barato que a padaria</span></p>
+        </div>
+        <ul class="mt-6 space-y-3 text-sm plan-feats">
+          <li class="flex gap-3"><span class="text-gold">✦</span> 2 pacotes de 250g por mês</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Curadoria premium + 1 microlote</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> <strong>Frete grátis</strong> em toda entrega</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> 15% off na loja</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Acesso antecipado a lançamentos</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Conteúdo exclusivo de preparo</li>
+        </ul>
+        <a data-wa="Olá! Quero assinar o plano Clube ÁUREO (R$109/mês). É o mais popular!" class="btn btn-gold w-full plan-cta mt-7">Assinar Clube ÁUREO</a>
+      </article>
+
+      <!-- Reserva -->
+      <article class="card plan-card p-8 reveal !bg-espresso text-cream" data-delay="2" id="plan-res" data-cups="60">
+        <p class="eyebrow">Premium</p>
+        <h3 class="font-display text-3xl mt-1">Reserva</h3>
+        <p class="text-sm opacity-65 mt-1 plan-tagline">Para o explorador que busca o extraordinário.</p>
+        <div class="mt-5">
+          <p><span class="font-display text-5xl">R$ <span data-price-monthly="199" data-price-quarter="537">199</span></span><span class="opacity-60 text-sm" data-cycle-label>/mês</span></p>
+          <p class="text-sm mt-1.5 percup"><span class="text-gold font-semibold">≈ R$ <span data-percup>3,32</span></span><span class="opacity-55">por xícara de microlote raro</span></p>
+        </div>
+        <ul class="mt-6 space-y-3 text-sm plan-feats">
+          <li class="flex gap-3"><span class="text-gold">✦</span> 3 pacotes de microlotes raros</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Edições limitadas e competition lots</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Frete grátis express</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> 15% off + brindes exclusivos</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Cupping online com o mestre de torra</li>
+          <li class="flex gap-3"><span class="text-gold">✦</span> Concierge dedicado no WhatsApp</li>
+        </ul>
+        <a data-wa="Olá! Quero assinar o plano Reserva (R$199/mês) do Clube ÁUREO." class="btn btn-gold w-full plan-cta mt-7">Assinar Reserva</a>
+      </article>
+    </div>
+    <p class="text-center text-xs opacity-55 mt-8">Cobrança recorrente · Cancele a qualquer momento · Primeiro envio em até 7 dias · Preço por xícara estimado em ~20 xícaras por pacote de 250g</p>
+  </section>
+
+  <!-- ===================== GARANTIA / RISCO-REVERSO ===================== -->
+  <section class="max-w-5xl mx-auto px-5 pb-20">
+    <div class="card reveal flex flex-col sm:flex-row items-center gap-6 p-8" style="border-color:rgba(91,107,82,.45);background:linear-gradient(180deg,#fff,#fbfdf8)">
+      <div class="ic-circle flex-none" style="background:rgba(91,107,82,.16);color:var(--moss)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="text-center sm:text-left">
+        <p class="font-display text-2xl">Garantia da primeira xícara</p>
+        <p class="text-sm opacity-70 mt-1.5 max-w-2xl">Não amou o café do seu primeiro envio? A gente troca o lote ou devolve 100% do valor — sem perguntas. E você pode pausar, pular um mês ou cancelar quando quiser, pela sua conta, sem multa e sem letras miúdas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== POR QUE ASSINAR (vs. comprar avulso) ===================== -->
+  <section class="bg-sand">
+    <div class="max-w-7xl mx-auto px-5 py-20">
+      <div class="text-center reveal max-w-2xl mx-auto">
+        <span class="eyebrow">Por que assinar</span>
+        <h2 class="font-display text-4xl sm:text-5xl mt-2">Comprar é ótimo. Assinar muda tudo.</h2>
+        <p class="opacity-70 mt-4">Os perks (15% off, frete grátis, microlotes) você já viu nos planos. O que a assinatura faz de verdade é mudar a sua relação com o café:</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div class="card p-7 reveal">
+          <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3.5V9h-5.5"/></svg></div>
+          <p class="font-display text-xl mt-4">Nunca mais sem café</p>
+          <p class="text-sm opacity-65 mt-2">Chega sozinho, fresco, na data que você escolher. Acabou a corrida ao mercado e o pó esquecido na prateleira há meses.</p>
+        </div>
+        <div class="card p-7 reveal" data-delay="1">
+          <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
+          <p class="font-display text-xl mt-4">Seu paladar evolui</p>
+          <p class="text-sm opacity-65 mt-2">Cada entrega é uma origem nova. Em poucos meses você sai do “café comum” e passa a reconhecer notas, métodos e torras — sem estudar nada.</p>
+        </div>
+        <div class="card p-7 reveal" data-delay="2">
+          <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.4a3 3 0 0 1 0 5.2M20.5 20a5.5 5.5 0 0 0-4.5-5.4"/></svg></div>
+          <p class="font-display text-xl mt-4">Você entra no clube</p>
+          <p class="text-sm opacity-65 mt-2">Mais que comprar café: você se junta a 1.200+ pessoas obcecadas por qualidade, com histórias de origem e dicas de preparo a cada caixa.</p>
+        </div>
+        <div class="card p-7 reveal" data-delay="3">
+          <div class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h8M17 7h3M4 12h3M11 12h9M4 17h7M16 17h4"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="13" cy="17" r="2"/></svg></div>
+          <p class="font-display text-xl mt-4">Tudo no seu ritmo</p>
+          <p class="text-sm opacity-65 mt-2">Você manda: defina intensidade, método e quantidade. Adiante, pule ou troque entregas em segundos pela sua conta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMO FUNCIONA ===================== -->
+  <section class="max-w-7xl mx-auto px-5 py-20">
+    <div class="text-center reveal"><span class="eyebrow">Simples assim</span><h2 class="font-display text-4xl sm:text-5xl mt-2">Como funciona</h2></div>
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      <div class="reveal text-center"><div class="font-display text-5xl text-gold">1</div><p class="font-display text-2xl mt-2">Escolha seu plano</p><p class="text-sm opacity-65 mt-2">Defina quantidade e frequência. Conte pra gente seu método e gosto.</p></div>
+      <div class="reveal text-center" data-delay="1"><div class="font-display text-5xl text-gold">2</div><p class="font-display text-2xl mt-2">Receba em casa</p><p class="text-sm opacity-65 mt-2">Torramos sob demanda e enviamos frescos na data combinada.</p></div>
+      <div class="reveal text-center" data-delay="2"><div class="font-display text-5xl text-gold">3</div><p class="font-display text-2xl mt-2">Gerencie tudo</p><p class="text-sm opacity-65 mt-2">Pause, troque, adiante ou cancele pela sua conta — sem burocracia.</p></div>
+    </div>
+  </section>
+
+  <!-- ===================== DEPOIMENTOS ===================== -->
+  <section class="bg-espresso text-cream relative overflow-hidden">
+    <div class="absolute inset-0" style="background:radial-gradient(80% 80% at 20% 0%, rgba(193,154,91,.16), transparent 55%)"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-5 py-20">
+      <div class="text-center reveal"><span class="eyebrow" style="color:var(--gold)">Quem assina, ama</span><h2 class="font-display text-4xl sm:text-5xl mt-2">4,9/5 em mais de 1.200 assinantes</h2></div>
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <figure class="rounded-2xl p-7 reveal" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)">
+          <div class="stars text-lg">★★★★★</div>
+          <blockquote class="mt-3 opacity-90 leading-relaxed">“Cancelei o cafezinho da padaria. O do clube é absurdamente melhor e ainda sai mais barato por xícara. Cada mês é uma surpresa deliciosa.”</blockquote>
+          <figcaption class="mt-4 text-sm opacity-60">— Marina A., assinante Clube ÁUREO</figcaption>
+        </figure>
+        <figure class="rounded-2xl p-7 reveal" data-delay="1" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)">
+          <div class="stars text-lg">★★★★★</div>
+          <blockquote class="mt-3 opacity-90 leading-relaxed">“Sou barista amador e o Reserva me dá acesso a microlotes que eu não acharia em lugar nenhum. O cupping com o mestre de torra é impagável.”</blockquote>
+          <figcaption class="mt-4 text-sm opacity-60">— Rafael T., assinante Reserva</figcaption>
+        </figure>
+        <figure class="rounded-2xl p-7 reveal" data-delay="2" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)">
+          <div class="stars text-lg">★★★★★</div>
+          <blockquote class="mt-3 opacity-90 leading-relaxed">“Comecei no Degustação só pra testar e nunca mais parei. Chega fresquinho, com a ficha de notas, e me ensinou a sentir o café de verdade.”</blockquote>
+          <figcaption class="mt-4 text-sm opacity-60">— Juliana M., assinante Degustação</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="max-w-3xl mx-auto px-5 py-24">
+    <h2 class="font-display text-3xl sm:text-4xl text-center reveal">Perguntas frequentes</h2>
+    <div class="mt-10 space-y-3">
+      <details class="card p-5 reveal"><summary class="font-medium cursor-pointer flex justify-between">Posso pausar ou cancelar quando quiser?<span class="text-gold">+</span></summary><p class="text-sm opacity-70 mt-3">Sim. Você controla tudo pela área "Minha conta" — pausar, pular um mês, trocar de plano ou cancelar, sem multa.</p></details>
+      <details class="card p-5 reveal"><summary class="font-medium cursor-pointer flex justify-between">Posso escolher os cafés?<span class="text-gold">+</span></summary><p class="text-sm opacity-70 mt-3">A graça do clube é a curadoria-surpresa, mas você define preferências (método, intensidade, evitar descafeinado etc.) e nós respeitamos.</p></details>
+      <details class="card p-5 reveal"><summary class="font-medium cursor-pointer flex justify-between">Como funciona o preço por xícara?<span class="text-gold">+</span></summary><p class="text-sm opacity-70 mt-3">Estimamos cerca de 20 xícaras por pacote de 250g (coado). Dividindo o valor do plano pelas xícaras do mês, o Clube ÁUREO fica em torno de R$ 2,73 a xícara — bem abaixo dos R$ 12 a 18 de uma cafeteria.</p></details>
+      <details class="card p-5 reveal"><summary class="font-medium cursor-pointer flex justify-between">Como é a cobrança?<span class="text-gold">+</span></summary><p class="text-sm opacity-70 mt-3">Recorrente no cartão ou Pix automático. No plano trimestral você economiza 10% pagando a cada 3 meses.</p></details>
+      <details class="card p-5 reveal"><summary class="font-medium cursor-pointer flex justify-between">E se eu não gostar do café?<span class="text-gold">+</span></summary><p class="text-sm opacity-70 mt-3">Vale a garantia da primeira xícara: não amou seu primeiro envio, a gente troca o lote ou devolve 100% do valor.</p></details>
+      <details class="card p-5 reveal"><summary class="font-medium cursor-pointer flex justify-between">Recebo acompanhamento do envio?<span class="text-gold">+</span></summary><p class="text-sm opacity-70 mt-3">Sim — a cada etapa avisamos pelo WhatsApp, do preparo à entrega, com o código de rastreio.</p></details>
+    </div>
+    <div class="text-center mt-10 reveal"><a href="#planos" class="btn btn-primary">Ver planos novamente</a></div>
+  </section>
+
+  <footer class="bg-espresso text-cream">
+    <div class="max-w-7xl mx-auto px-5 py-10 text-xs opacity-50">© <span data-year>2026</span> ÁUREO Cafés Especiais. Demonstração de UI.</div>
+  </footer>
+
+  <a data-wa="Olá! Tenho dúvidas sobre o Clube de Assinatura ÁUREO." class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.04c-.24.68-1.4 1.3-1.93 1.38-.49.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.17-.19.69-.81.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.21.52.32.07.12.07.66-.17 1.34z"/></svg></a>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ---- Preço por xícara: acompanha o toggle mensal/trimestral ---- */
+      (function () {
+        const toggle = document.querySelector('[data-billing-toggle]');
+        const cards = [...document.querySelectorAll('[data-cups]')];
+        if (!cards.length) return;
+        const fmt = n => n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const update = () => {
+          const cycle = (toggle && toggle.dataset.cycle) || 'month';
+          cards.forEach(card => {
+            const cups = parseFloat(card.dataset.cups);
+            const priceEl = card.querySelector('[data-price-monthly]');
+            const out = card.querySelector('[data-percup]');
+            if (!cups || !priceEl || !out) return;
+            const monthly = cycle === 'quarter'
+              ? parseFloat(priceEl.dataset.priceQuarter) / 3
+              : parseFloat(priceEl.dataset.priceMonthly);
+            out.textContent = fmt(monthly / cups);
+          });
+        };
+        update();
+        // o handler do main.js já atualiza dataset.cycle; rodamos logo depois
+        if (toggle) toggle.querySelectorAll('button').forEach(b => b.addEventListener('click', () => requestAnimationFrame(update)));
+      })();
+
+      /* ---- Trilha do café: quiz personalizado ---- */
+      const quiz = document.getElementById('quiz');
+      if (!quiz) return;
+      const steps = [...quiz.querySelectorAll('.quiz-step')];
+      const dots = [...document.querySelectorAll('[data-dot]')];
+      const fill = document.querySelector('[data-trail-fill]');
+      const backBtn = quiz.querySelector('[data-quiz-back]');
+      const progress = quiz.querySelector('[data-quiz-progress]');
+      const result = quiz.querySelector('[data-result]');
+      const nav = quiz.querySelector('[data-quiz-nav]');
+      const total = steps.length;
+      let cur = 0;
+      const score = { deg: 0, sel: 0, res: 0 };
+      const history = [];
+
+      const PLANS = {
+        deg: { name: 'Degustação', target: 'plan-deg', price: 'R$ 59/mês', tagline: 'Perfeito para começar a explorar o universo dos especiais — sem pressa e sem compromisso.', wa: 'Fiz a trilha do café e meu clube ideal é o Degustação (R$59/mês). Quero assinar!' },
+        sel: { name: 'Clube ÁUREO', target: 'plan-sel', price: 'R$ 109/mês', tagline: 'O equilíbrio ideal entre variedade, economia e qualidade — o favorito de quem toma café todo dia.', wa: 'Fiz a trilha do café e meu clube ideal é o Clube ÁUREO (R$109/mês). Quero assinar!' },
+        res: { name: 'Reserva', target: 'plan-res', price: 'R$ 199/mês', tagline: 'Para o explorador que busca o extraordinário: microlotes raros, edições limitadas e mimos exclusivos.', wa: 'Fiz a trilha do café e meu clube ideal é o Reserva (R$199/mês). Quero assinar!' },
+      };
+
+      function show(i) {
+        steps.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        dots.forEach((d, idx) => { d.classList.toggle('done', idx < i); d.classList.toggle('current', idx === i); });
+        fill.style.width = (i / (total - 1)) * 100 + '%';
+        progress.textContent = `Passo ${i + 1} de ${total}`;
+        backBtn.disabled = i === 0;
+      }
+
+      quiz.querySelectorAll('.opt').forEach(opt => opt.addEventListener('click', () => {
+        score[opt.dataset.plan]++; history.push(opt.dataset.plan);
+        if (cur < total - 1) { cur++; show(cur); } else finish();
+      }));
+
+      backBtn.addEventListener('click', () => {
+        if (cur === 0) return;
+        const last = history.pop(); if (last) score[last]--;
+        cur--; show(cur);
+      });
+
+      function finish() {
+        const order = ['sel', 'res', 'deg']; // desempate: popular > premium > iniciante
+        const best = Object.keys(score).sort((a, b) => score[b] - score[a] || order.indexOf(a) - order.indexOf(b))[0];
+        const p = PLANS[best];
+
+        steps.forEach(s => s.classList.remove('active'));
+        nav.style.display = 'none';
+        dots.forEach(d => { d.classList.add('done'); d.classList.remove('current'); });
+        fill.style.width = '100%';
+
+        result.innerHTML = `
+          <span class="eyebrow">Sua trilha revelou</span>
+          <h3 class="font-display text-4xl mt-2">Clube ${p.name}</h3>
+          <p class="opacity-70 mt-3 max-w-md mx-auto">${p.tagline}</p>
+          <p class="font-display text-3xl text-gold mt-4">${p.price}</p>
+          <div class="flex flex-wrap gap-3 justify-center mt-7">
+            <a data-wa="${p.wa}" class="btn btn-gold">Assinar ${p.name}</a>
+            <button class="btn btn-ghost" data-goto>Ver detalhes do plano</button>
+            <button class="btn btn-ghost !py-2 !px-4 text-sm" data-restart>↻ Refazer</button>
+          </div>`;
+        result.classList.add('show');
+
+        const wa = result.querySelector('[data-wa]');
+        wa.href = window.AUREO_WA(wa.dataset.wa); wa.target = '_blank'; wa.rel = 'noopener';
+
+        const highlight = () => {
+          const el = document.getElementById(p.target);
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.classList.remove('plan-reco'); void el.offsetWidth; el.classList.add('plan-reco');
+        };
+        result.querySelector('[data-goto]').addEventListener('click', highlight);
+        result.querySelector('[data-restart]').addEventListener('click', () => {
+          score.deg = score.sel = score.res = 0; history.length = 0; cur = 0;
+          result.classList.remove('show'); result.innerHTML = ''; nav.style.display = ''; show(0);
+        });
+
+        document.getElementById(p.target).classList.add('plan-reco');
+        window.AUREO_BEAN_BURST(32);
+        setTimeout(() => window.AUREO_TOAST(`Recomendamos o Clube ${p.name} pra você`), 350);
+      }
+
+      show(0);
+    });
+  </script>
+</body>
+</html>

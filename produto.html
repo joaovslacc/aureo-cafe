@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produto — ÁUREO Cafés Especiais</title>
+  <meta name="description" content="Detalhes do café especial: origem rastreável, pontuação SCA, perfil sensorial, processo e recomendações de preparo. Compra única ou assine e economize 15%." />
+  <meta name="theme-color" content="#1c1714" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { espresso:'#1c1714', bean:'#2a1d16', cocoa:'#3b2a20', cream:'#f6f1e7', sand:'#ede4d3', gold:'#c19a5b', goldlight:'#d9be8e', moss:'#5b6b52' },
+      fontFamily: { display:['Fraunces','serif'], sans:['Inter','sans-serif'] },
+    }}};
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Seletor de tipo de compra / moagem — estados claros (ui-ux state-clarity) */
+    .pick { border:1.5px solid var(--line); border-radius:16px; background:#fff; cursor:pointer; transition:all .2s cubic-bezier(.2,.7,.2,1); text-align:left; }
+    .pick:hover { border-color:var(--gold); }
+    .pick[aria-pressed="true"], .pick.is-active { border-color:var(--gold); background:linear-gradient(180deg,#fffdf8,#fff6e9); box-shadow:0 0 0 1px var(--gold) inset; }
+    .pick .tick { opacity:0; transition:opacity .2s; }
+    .pick[aria-pressed="true"] .tick { opacity:1; }
+    .rate-row { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:.6rem; }
+    .rate-bar { height:7px; border-radius:99px; background:var(--sand); overflow:hidden; }
+    .rate-bar > i { display:block; height:100%; background:var(--gold); }
+  </style>
+</head>
+<body class="font-sans">
+
+  <header class="site-header sticky top-0 z-50 py-4 scrolled">
+    <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl font-semibold tracking-wide">ÁUREO<span class="text-gold">.</span></a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="loja.html" class="nav-link active">Loja</a>
+        <a href="assinatura.html" class="nav-link">Clube</a>
+        <a href="sobre.html" class="nav-link">Nossa história</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="conta.html" aria-label="Minha conta" class="hover:text-gold transition"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></a>
+        <a href="carrinho.html" aria-label="Sacola" class="relative hover:text-gold transition"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span data-cart-count class="hidden absolute -top-2 -right-2 bg-gold text-espresso text-[10px] font-bold w-5 h-5 grid place-items-center rounded-full">0</span></a>
+        <button data-menu-toggle class="md:hidden" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div data-mobile-menu class="mobile-menu hidden-menu fixed inset-0 z-50 bg-cream md:hidden">
+    <div class="flex justify-between items-center px-5 py-4 border-b" style="border-color:var(--line)"><span class="font-display text-2xl font-semibold">ÁUREO<span class="text-gold">.</span></span><button data-menu-close aria-label="Fechar"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <nav class="flex flex-col px-5 py-6 gap-1 text-lg font-display">
+      <a href="index.html" class="py-3 border-b" style="border-color:var(--line)">Início</a>
+      <a href="loja.html" class="py-3 border-b" style="border-color:var(--line)">Loja</a>
+      <a href="assinatura.html" class="py-3 border-b" style="border-color:var(--line)">Clube de Assinatura</a>
+      <a href="sobre.html" class="py-3">Nossa história</a>
+    </nav>
+  </div>
+
+  <main data-product-detail data-product-scope class="max-w-7xl mx-auto px-5 pt-10 pb-20">
+    <nav aria-label="Trilha" class="text-xs opacity-60 mb-6"><a href="index.html" class="hover:text-gold">Início</a> / <a href="loja.html" class="hover:text-gold">Loja</a> / <span data-pd="name">Café</span></nav>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- ============ Gallery ============ -->
+      <div class="reveal">
+        <div data-gallery-main class="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl"></div>
+        <div class="grid grid-cols-4 gap-3 mt-3">
+          <button data-gallery-thumb data-a="#4a3526" data-b="#1c1714" aria-label="Imagem 1" class="aspect-square rounded-xl overflow-hidden ring-gold ring-2"><div class="bean-art" style="--bag-a:#4a3526;--bag-b:#1c1714"></div></button>
+          <button data-gallery-thumb data-a="#5a3d23" data-b="#2a1d16" aria-label="Imagem 2" class="aspect-square rounded-xl overflow-hidden"><div class="bean-art" style="--bag-a:#5a3d23;--bag-b:#2a1d16"></div></button>
+          <button data-gallery-thumb data-a="#6b3f2a" data-b="#2a1d16" aria-label="Imagem 3" class="aspect-square rounded-xl overflow-hidden"><div class="bean-art" style="--bag-a:#6b3f2a;--bag-b:#2a1d16"></div></button>
+          <button data-gallery-thumb data-a="#2f231b" data-b="#0f0b08" aria-label="Imagem 4" class="aspect-square rounded-xl overflow-hidden"><div class="bean-art" style="--bag-a:#2f231b;--bag-b:#0f0b08"></div></button>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 reveal" data-delay="1">
+          <div class="flex flex-col items-center text-center gap-2">
+            <span class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M3 7h11v9H3z"/><path d="M14 10h3l3 3v3h-6z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+            <p class="text-xs opacity-70 leading-snug">Frete grátis acima de R$99</p>
+          </div>
+          <div class="flex flex-col items-center text-center gap-2">
+            <span class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg></span>
+            <p class="text-xs opacity-70 leading-snug">Torra sob demanda (48h)</p>
+          </div>
+          <div class="flex flex-col items-center text-center gap-2">
+            <span class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg></span>
+            <p class="text-xs opacity-70 leading-snug">Garantia de frescor</p>
+          </div>
+          <div class="flex flex-col items-center text-center gap-2">
+            <span class="ic-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></span>
+            <p class="text-xs opacity-70 leading-snug">Pagamento seguro</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Buy box (sticky no desktop) ============ -->
+      <div class="reveal lg:sticky lg:top-24 self-start" data-delay="1">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span class="chip chip-gold !bg-gold !text-espresso" data-pd="tag">Microlote</span>
+          <span class="badge-sca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.4 5.9.8-4.3 4.2 1 5.9L12 15.6 6.8 18.3l1-5.9-4.3-4.2 5.9-.8z"/></svg> <span data-pd-sca>87,5</span> PONTOS SCA</span>
+          <a href="#avaliacoes" class="text-sm text-gold flex items-center gap-1 hover:underline">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+            4,9 <span class="opacity-60">(128)</span>
+          </a>
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-5xl mt-3 leading-tight" data-pd="name">Café</h1>
+        <p class="opacity-70 mt-2"><span data-pd="origin">Origem</span> · <span data-pd="notes" class="italic">notas</span></p>
+
+        <!-- Scarcity -->
+        <div class="scarcity mt-5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M12 8v5l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+          <span>Lote atual quase esgotado</span>
+          <span class="bar"><i style="width:82%"></i></span>
+        </div>
+
+        <!-- Tipo de compra: única x assinatura (subscribe & save) -->
+        <div class="mt-6" role="group" aria-label="Tipo de compra">
+          <p class="label">Como você quer receber</p>
+          <div class="grid gap-3">
+            <button type="button" class="pick is-active p-4 flex items-start gap-3" data-buy="once" aria-pressed="true">
+              <span class="mt-0.5 w-5 h-5 rounded-full border-2 grid place-items-center flex-none" style="border-color:var(--gold)"><span class="tick w-2.5 h-2.5 rounded-full bg-gold"></span></span>
+              <span class="flex-1">
+                <span class="flex justify-between gap-2"><span class="font-medium">Compra única</span><span class="font-display text-lg" data-pd="price">R$ —</span></span>
+                <span class="text-sm opacity-60 block">Pacote de <span data-pd="weight">250g</span> · em até 6x sem juros</span>
+              </span>
+            </button>
+            <button type="button" class="pick p-4 flex items-start gap-3" data-buy="sub" aria-pressed="false">
+              <span class="mt-0.5 w-5 h-5 rounded-full border-2 grid place-items-center flex-none" style="border-color:var(--gold)"><span class="tick w-2.5 h-2.5 rounded-full bg-gold"></span></span>
+              <span class="flex-1">
+                <span class="flex justify-between gap-2"><span class="font-medium">Assinar e economizar <span class="text-gold">15%</span></span><span class="font-display text-lg" data-sub-price>R$ —</span></span>
+                <span class="text-sm opacity-60 block">Entrega mensal · frete grátis · pause quando quiser</span>
+                <span class="chip chip-moss mt-2">Mais vantajoso</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Moagem -->
+        <div class="mt-6">
+          <label class="label">Moagem</label>
+          <div class="flex flex-wrap gap-2" id="grind" role="group" aria-label="Moagem">
+            <button class="btn btn-primary !py-2 !px-4 text-sm" aria-pressed="true">Grãos inteiros</button>
+            <button class="btn btn-ghost !py-2 !px-4 text-sm" aria-pressed="false">Espresso</button>
+            <button class="btn btn-ghost !py-2 !px-4 text-sm" aria-pressed="false">Coado / V60</button>
+            <button class="btn btn-ghost !py-2 !px-4 text-sm" aria-pressed="false">Prensa francesa</button>
+          </div>
+        </div>
+
+        <!-- Qty + ação primária -->
+        <div class="mt-7 flex items-center gap-4">
+          <div class="stepper"><button type="button" data-step="-" aria-label="Diminuir">−</button><input type="text" data-qty value="1" min="1" inputmode="numeric" aria-label="Quantidade" readonly><button type="button" data-step="+" aria-label="Aumentar">+</button></div>
+          <button id="add-main-btn" data-add-main data-add="geisha" class="btn btn-primary flex-1">Adicionar à sacola</button>
+          <a id="sub-btn" href="assinatura.html" class="btn btn-gold flex-1 hidden">Assinar e economizar 15% →</a>
+        </div>
+
+        <!-- Perks -->
+        <ul class="mt-7 space-y-2 text-sm opacity-75">
+          <li class="flex items-center gap-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gold flex-none"><circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2 4.5-5"/></svg> Torrado sob demanda — enviado em até 48h</li>
+          <li class="flex items-center gap-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gold flex-none"><circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2 4.5-5"/></svg> Frete grátis acima de R$ 99 para todo o Brasil</li>
+          <li class="flex items-center gap-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gold flex-none"><circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2 4.5-5"/></svg> Acompanhamento do pedido pelo WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ Perfil sensorial ============ -->
+    <section class="mt-20">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <p class="eyebrow">Na xícara</p>
+        <h2 class="font-display text-3xl sm:text-4xl mt-2">Perfil sensorial</h2>
+        <p class="opacity-70 mt-3">Notas dominantes de <span data-pd="notes" class="text-espresso font-medium">—</span>, avaliadas em cupping pelos nossos Q-Graders.</p>
+      </div>
+      <div class="max-w-2xl mx-auto mt-10 grid sm:grid-cols-3 gap-6 reveal" data-delay="1">
+        <div class="card p-6 text-center">
+          <p class="opacity-60 text-sm">Corpo</p>
+          <div class="h-2 bg-sand rounded-full mt-3 overflow-hidden"><div class="h-full bg-gold" style="width:70%"></div></div>
+          <p class="text-xs opacity-50 mt-2">Aveludado</p>
+        </div>
+        <div class="card p-6 text-center">
+          <p class="opacity-60 text-sm">Acidez</p>
+          <div class="h-2 bg-sand rounded-full mt-3 overflow-hidden"><div class="h-full bg-gold" style="width:85%"></div></div>
+          <p class="text-xs opacity-50 mt-2">Cítrica e viva</p>
+        </div>
+        <div class="card p-6 text-center">
+          <p class="opacity-60 text-sm">Doçura</p>
+          <div class="h-2 bg-sand rounded-full mt-3 overflow-hidden"><div class="h-full bg-gold" style="width:78%"></div></div>
+          <p class="text-xs opacity-50 mt-2">Tipo mel</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Jornada ============ -->
+    <section class="mt-20">
+      <p class="eyebrow text-center reveal">Do talhão ao seu coador</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-center mt-2 reveal" data-delay="1">Da fazenda à xícara</h2>
+      <div class="journey relative grid grid-cols-4 gap-3 mt-12 max-w-4xl mx-auto reveal" data-delay="2">
+        <div class="journey__line"><span></span></div>
+        <div class="journey__node">
+          <div class="journey__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-7"/><path d="M12 13c0-3-2-5-5-5 0 3 2 5 5 5z"/><path d="M12 11c0-2.5 2-4 4.5-4 0 2.5-2 4-4.5 4z"/></svg></div>
+          <p class="text-sm mt-2">Colheita</p>
+        </div>
+        <div class="journey__node">
+          <div class="journey__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-2 1-3 1-5 1 1 2 1 3-3z"/></svg></div>
+          <p class="text-sm mt-2">Torra</p>
+        </div>
+        <div class="journey__node">
+          <div class="journey__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h3l3 3v3h-6z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div>
+          <p class="text-sm mt-2">Envio</p>
+        </div>
+        <div class="journey__node">
+          <div class="journey__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M7.5 2.5c-.5.8.5 1.4 0 2.5M11.5 2.5c-.5.8.5 1.4 0 2.5"/></svg></div>
+          <p class="text-sm mt-2">Ritual</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ História / detalhes ============ -->
+    <section class="mt-20">
+      <p class="eyebrow reveal">A história por trás do lote</p>
+      <h2 class="font-display text-3xl sm:text-4xl mt-2 reveal" data-delay="1">Origem, processo e preparo</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card p-7 reveal"><p class="eyebrow">Origem</p><p class="mt-3 text-sm opacity-75 leading-relaxed">Cultivado em altitude elevada por produtores parceiros, colhido seletivamente apenas com cerejas maduras. Rastreabilidade total do talhão à torra.</p></div>
+        <div class="card p-7 reveal" data-delay="1"><p class="eyebrow">Processo</p><p class="mt-3 text-sm opacity-75 leading-relaxed">Fermentação controlada e secagem lenta em terreiro suspenso, preservando doçura e complexidade aromática. Lote analisado e pontuado por Q-Grader.</p></div>
+        <div class="card p-7 reveal" data-delay="2"><p class="eyebrow">Preparo sugerido</p><p class="mt-3 text-sm opacity-75 leading-relaxed">Proporção 1:15 (café:água), água a 92–94°C. Para coado, extração de 2'30" a 3'. Deixe respirar 30s no bloom.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ Avaliações ============ -->
+    <section id="avaliacoes" class="mt-20 scroll-mt-24">
+      <p class="eyebrow reveal">O que dizem</p>
+      <h2 class="font-display text-3xl sm:text-4xl mt-2 reveal" data-delay="1">Avaliações de quem já provou</h2>
+
+      <!-- Resumo + distribuição (rating breakdown) -->
+      <div class="grid sm:grid-cols-[auto,1fr] gap-8 sm:gap-12 items-center mt-8 card p-7 reveal" data-delay="1">
+        <div class="text-center sm:border-r sm:pr-12" style="border-color:var(--line)">
+          <p class="font-display text-6xl leading-none">4,9</p>
+          <div class="flex items-center justify-center gap-0.5 text-gold mt-2">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+          </div>
+          <p class="text-xs opacity-60 mt-2">128 avaliações</p>
+          <p class="text-xs text-moss font-semibold mt-1">98% recomendam</p>
+        </div>
+        <div class="space-y-2.5 w-full">
+          <div class="rate-row"><span class="text-sm opacity-70 w-8">5 ★</span><span class="rate-bar"><i style="width:86%"></i></span><span class="text-sm opacity-60 tabular w-10 text-right">86%</span></div>
+          <div class="rate-row"><span class="text-sm opacity-70 w-8">4 ★</span><span class="rate-bar"><i style="width:10%"></i></span><span class="text-sm opacity-60 tabular w-10 text-right">10%</span></div>
+          <div class="rate-row"><span class="text-sm opacity-70 w-8">3 ★</span><span class="rate-bar"><i style="width:3%"></i></span><span class="text-sm opacity-60 tabular w-10 text-right">3%</span></div>
+          <div class="rate-row"><span class="text-sm opacity-70 w-8">2 ★</span><span class="rate-bar"><i style="width:1%"></i></span><span class="text-sm opacity-60 tabular w-10 text-right">1%</span></div>
+          <div class="rate-row"><span class="text-sm opacity-70 w-8">1 ★</span><span class="rate-bar"><i style="width:0%"></i></span><span class="text-sm opacity-60 tabular w-10 text-right">0%</span></div>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <figure class="card p-6 reveal">
+          <div class="flex items-center gap-0.5 text-gold" aria-label="5 de 5 estrelas">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+          </div>
+          <blockquote class="mt-3 text-sm opacity-80 leading-relaxed">"Notas de frutas vermelhas muito claras, e a torra chegou fresquinha em 2 dias. Melhor café que já comprei online."</blockquote>
+          <figcaption class="text-xs opacity-60 mt-4 flex items-center gap-2"><span class="font-medium">Renata A.</span><span class="chip chip-moss"><svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> verificada</span></figcaption>
+        </figure>
+        <figure class="card p-6 reveal" data-delay="1">
+          <div class="flex items-center gap-0.5 text-gold" aria-label="5 de 5 estrelas">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+          </div>
+          <blockquote class="mt-3 text-sm opacity-80 leading-relaxed">"Assinei o clube depois de provar esse microlote. Embalagem impecável e a moagem certa pra minha V60."</blockquote>
+          <figcaption class="text-xs opacity-60 mt-4 flex items-center gap-2"><span class="font-medium">Marcos T.</span><span class="chip chip-moss"><svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> verificada</span></figcaption>
+        </figure>
+        <figure class="card p-6 reveal" data-delay="2">
+          <div class="flex items-center gap-0.5 text-gold" aria-label="4 de 5 estrelas">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 16.9 6.1 20l1.2-6.5-4.8-4.6 6.6-.9z"/></svg>
+          </div>
+          <blockquote class="mt-3 text-sm opacity-80 leading-relaxed">"Doçura surpreendente, lembra caramelo. Só achei o lote pequeno demais — corre que esgota rápido."</blockquote>
+          <figcaption class="text-xs opacity-60 mt-4 flex items-center gap-2"><span class="font-medium">Beatriz L.</span><span class="chip chip-moss"><svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> verificada</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Relacionados ============ -->
+    <section class="mt-20">
+      <h2 class="font-display text-3xl sm:text-4xl reveal">Você também vai gostar</h2>
+      <div data-related class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"></div>
+    </section>
+  </main>
+
+  <!-- Sticky add-to-cart bar -->
+  <div id="sticky-bar" class="fixed left-0 right-0 bottom-0 z-40 bg-cream/95 backdrop-blur border-t translate-y-full transition-transform duration-300" style="border-color:var(--line)">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center gap-4">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium truncate" data-pd="name">Café</p>
+        <p class="font-display text-lg leading-none" data-pd="price">R$ —</p>
+      </div>
+      <button onclick="document.querySelector('[data-add-main]').click()" class="btn btn-primary">Adicionar à sacola</button>
+    </div>
+  </div>
+
+  <footer class="bg-espresso text-cream">
+    <div class="max-w-7xl mx-auto px-5 py-14 grid md:grid-cols-4 gap-10">
+      <div><p class="font-display text-2xl font-semibold">ÁUREO<span class="text-gold">.</span></p><p class="text-sm opacity-65 mt-3 max-w-xs">Cafés especiais de origem única.</p></div>
+      <div><p class="eyebrow">Loja</p><ul class="mt-4 space-y-2 text-sm opacity-75"><li><a href="loja.html" class="hover:text-gold">Todos os cafés</a></li><li><a href="assinatura.html" class="hover:text-gold">Clube</a></li></ul></div>
+      <div><p class="eyebrow">Institucional</p><ul class="mt-4 space-y-2 text-sm opacity-75"><li><a href="sobre.html" class="hover:text-gold">Nossa história</a></li><li><a href="conta.html" class="hover:text-gold">Minha conta</a></li></ul></div>
+      <div><p class="eyebrow">Contato</p><ul class="mt-4 space-y-2 text-sm opacity-75"><li>ola@aureocafe.com.br</li><li>São Paulo · SP</li></ul></div>
+    </div>
+    <div class="border-t border-white/10"><div class="max-w-7xl mx-auto px-5 py-5 text-xs opacity-50">© <span data-year>2026</span> ÁUREO Cafés Especiais. Demonstração de UI.</div></div>
+  </footer>
+
+  <a data-wa="Olá! Tenho uma dúvida sobre um café da ÁUREO." class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.04c-.24.68-1.4 1.3-1.93 1.38-.49.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.17-.19.69-.81.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.21.52.32.07.12.07.66-.17 1.34z"/></svg></a>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ---- Moagem: estado visual + aria-pressed ---- */
+      const gr = document.getElementById('grind');
+      gr?.addEventListener('click', e => {
+        const b = e.target.closest('button'); if (!b) return;
+        gr.querySelectorAll('button').forEach(x => { x.classList.remove('btn-primary'); x.classList.add('btn-ghost'); x.setAttribute('aria-pressed', 'false'); });
+        b.classList.add('btn-primary'); b.classList.remove('btn-ghost'); b.setAttribute('aria-pressed', 'true');
+      });
+
+      /* ---- Preço de assinatura (15% off) a partir do catálogo ---- */
+      const id = new URLSearchParams(location.search).get('p') || 'geisha';
+      const cat = window.AUREO_CATALOG || {};
+      const p = cat[id] || cat.geisha;
+      const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+      if (p) {
+        document.querySelectorAll('[data-sub-price]').forEach(el => el.textContent = BRL.format(p.price * 0.85) + '/mês');
+        if (p.sca) document.querySelectorAll('[data-pd-sca]').forEach(el => el.textContent = String(p.sca).replace('.', ','));
+      }
+
+      /* ---- Tipo de compra: única x assinar (subscribe & save) ---- */
+      const picks = [...document.querySelectorAll('[data-buy]')];
+      const addBtn = document.getElementById('add-main-btn');
+      const subBtn = document.getElementById('sub-btn');
+      picks.forEach(pk => pk.addEventListener('click', () => {
+        picks.forEach(x => { x.setAttribute('aria-pressed', 'false'); x.classList.remove('is-active'); });
+        pk.setAttribute('aria-pressed', 'true'); pk.classList.add('is-active');
+        const isSub = pk.dataset.buy === 'sub';
+        addBtn.classList.toggle('hidden', isSub);
+        subBtn.classList.toggle('hidden', !isSub);
+      }));
+    });
+  </script>
+  <script>
+    /* ---- Sticky add-to-cart bar — aparece ao rolar além do bloco de compra ---- */
+    document.addEventListener('DOMContentLoaded', () => {
+      const bar = document.getElementById('sticky-bar');
+      const trigger = document.getElementById('add-main-btn');
+      if (!bar || !trigger) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) bar.style.transition = 'none';
+      let visible = false;
+      const setVisible = (show) => { if (show === visible) return; visible = show; bar.classList.toggle('translate-y-full', !show); };
+      const onScroll = () => { const r = trigger.getBoundingClientRect(); setVisible(r.bottom < 0 && window.scrollY > 200); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    });
+  </script>
+</body>
+</html>
